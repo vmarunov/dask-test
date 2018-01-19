@@ -3,8 +3,7 @@ from dask.distributed import Client
 
 from tasks import load_data, get_param, task_a, grouper, task_group, task_b
 
-
-ISIN_COUNT = 1000
+ISIN_COUNT = 500
 
 
 def get_isins():

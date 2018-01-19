@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
+
 from dask.multiprocessing import get
 
-
-def test(par):
-    return 'a', 1, par
+from sizer import getsize
 
 
-def test1(par1, par2):
-    return ['2', par1, par2]
+def test_1(*args):
+    return args[0]
+
+
+def test_2(*args):
+    return args[0]
 
 
 def _start():
