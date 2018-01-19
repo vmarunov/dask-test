@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 import random
+import time
+
+
+def _work(weight=0.01):
+    u"""Имитация работы"""
+    time.sleep(random.randint(1, 20) * weight)
 
 
 def load_data(isin):
@@ -7,6 +13,7 @@ def load_data(isin):
     Загрузка нвчальных данных из базы
     Возвращает param_a, param_b
     """
+    _work()
     return {
         'param_a': '{}_param_a'.format(isin),
         'param_b': '{}_param_b'.format(isin)}
@@ -22,6 +29,7 @@ def task_a(isin, param_a, param_b):
     Можно выполнять независимо от любых других задач
     Зависит от загружаемых их базы param_a и param_b
     """
+    _work()
     result = 'Task_A_result_{}_{}_{}'.format(isin, param_a, param_b)
     return result
 
@@ -51,6 +59,7 @@ def task_group(group_data):
     Взвращает некий групповой результат.
     Задача требует завершения task_a для всех облигаций
     """
+    _work(0.1)
     result = {}
     for isin, data in group_data.iteritems():
         result[isin] = data
@@ -62,6 +71,7 @@ def task_b(isin, param_b, group_data):
     u"""
     Одиночная задача. Зависит от групповой задачи и от param_b
     """
+    _work()
     result = 'Task_B_result_{}_{}_{}'.format(
         isin, param_b, group_data[isin]['group'])
     return result

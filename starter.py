@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from dask.multiprocessing import get
+from dask.distributed import Client
 
 from tasks import load_data, get_param, task_a, grouper, task_group, task_b
 
 
-ISIN_COUNT = 10
+ISIN_COUNT = 1000
 
 
 def get_isins():
@@ -64,9 +64,14 @@ def start():
         get_list.append('task_a_res_{}'.format(i))
         get_list.append('task_b_res_{}'.format(i))
 
+    # Создаем client
+    client = Client('127.0.0.1:8786')
+
     # Получение результатов
-    result = get(graph, get_list)
-    print(result)
+    result = client.get(graph, get_list)
+    print(len(result))
+    with open('/Users/vladimirmarunov/git/dask-test/res.txt', 'w') as f:
+        f.write(str(result))
 
 
 if __name__ == '__main__':
