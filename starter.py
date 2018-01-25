@@ -9,7 +9,7 @@ from tasks import (
     load_data, get_param, task_a, grouper, task_group, task_group_alter,
     task_b, task_c)
 
-ISIN_COUNT = 500
+ISIN_COUNT = 50
 
 
 def get_isins():
@@ -120,5 +120,5 @@ def start_futures():
 
 
 if __name__ == '__main__':
-    start()
+    # start()
     start_futures()

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from functools import wraps
 import random
 import time
 
@@ -7,6 +8,7 @@ from dask.distributed import Future
 
 def futures_expand(func):
 
+    @wraps(func)
     def wrapper(*args, **kwargs):
         wrapper_args = []
         wrapper_kwargs = {}
