@@ -98,7 +98,7 @@ def start_futures():
 
     data = client.map(load_data, isins)
     params_a = client.map(get_param, data, ['param_a'] * len(isins))
-    params_b = client.map(get_param, data, ['param_a'] * len(isins))
+    params_b = client.map(get_param, data, ['param_b'] * len(isins))
 
     result_a = client.map(task_a, isins, params_a, params_b)
 
